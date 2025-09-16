@@ -6,6 +6,7 @@ const orderStatusSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Order', // The model to use for the reference
     required: true,
+    index: true
   },
   order_amount: {
     type: Number,

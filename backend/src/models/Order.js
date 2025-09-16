@@ -5,6 +5,7 @@ const orderSchema = new mongoose.Schema({
   school_id: {
     type: String,
     required: true,
+    index: true
   },
   trustee_id: {
     type: String,
@@ -20,6 +21,7 @@ const orderSchema = new mongoose.Schema({
   // Add this new field to store the ID from the payment gateway
   collect_request_id: {
     type: String,
+    index: true
   }
 }, {
   timestamps: true
