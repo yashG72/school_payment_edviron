@@ -10,9 +10,9 @@ function Layout() {
       <div className="w-64 bg-gray-800 text-white p-4">
         <h2 className="text-2xl font-bold mb-6">Dashboard</h2>
         <nav>
-          <NavLink to="/" className={linkClasses}>All Transactions</NavLink>
-          <NavLink to="/school" className={linkClasses}>By School</NavLink>
-          <NavLink to="/status" className={linkClasses}>Check Status</NavLink>
+          <NavLink to="/dashboard" end className={linkClasses}>All Transactions</NavLink>
+          <NavLink to="/dashboard/school" className={linkClasses}>By School</NavLink>
+          <NavLink to="/dashboard/status" className={linkClasses}>Check Status</NavLink>
         </nav>
       </div>
 

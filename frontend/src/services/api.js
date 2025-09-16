@@ -27,3 +27,18 @@ export const fetchTransactions = async (params = {}) => {
   const { data } = await api.get('/api/transactions', { params });
   return data;
 };
+
+export const fetchTransactionsBySchool = async (schoolId) => {
+  const { data } = await api.get(`/api/transactions/school/${schoolId}`);
+  return data;
+};
+
+export const fetchTransactionStatus = async (orderId) => {
+  const { data } = await api.get(`/api/transactions/status/${orderId}`);
+  return data;
+};
+
+export const registerUser = async (credentials) => {
+  const { data } = await api.post('/api/auth/register', credentials);
+  return data;
+};
