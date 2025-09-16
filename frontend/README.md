@@ -2,7 +2,7 @@
 
 This is the frontend for the School Payment and Dashboard Application. It's a responsive and user-friendly interface built with React, Vite, and Tailwind CSS, designed to interact with the corresponding [Backend API]([https://school-payment-edviron.onrender.com/]).
 
-**Live Demo**: `[your-live-app-link-will-go-here-after-deployment]`
+**Live Demo**: `[https://school-payment-edviron.vercel.app/]`
 
 ---
 
