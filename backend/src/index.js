@@ -4,22 +4,26 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const connectDB = require('./config/db');
 
-// Load environment variables
+const authRoutes = require('./routes/authRoutes');
+const paymentRoutes = require('./routes/paymentRoutes');
+const webhookRoutes = require('./routes/webhookRoutes');
+
 dotenv.config();
 
-// Connect to the database
 connectDB();
 
 const app = express();
 
-// Middleware
-app.use(cors()); // Enable Cross-Origin Resource Sharing
-app.use(express.json()); // To parse JSON request bodies
+app.use(cors());
+app.use(express.json());
 
-// A simple test route
 app.get('/', (req, res) => {
   res.send('School Payment API is running...');
 });
+
+app.use('/api/auth', authRoutes);
+app.use('/api/payments', paymentRoutes);
+app.use('/api/webhooks', webhookRoutes);
 
 const PORT = process.env.PORT || 8000;
 

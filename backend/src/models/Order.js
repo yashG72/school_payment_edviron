@@ -1,4 +1,4 @@
-
+// In src/models/Order.js
 const mongoose = require('mongoose');
 
 const orderSchema = new mongoose.Schema({
@@ -8,7 +8,6 @@ const orderSchema = new mongoose.Schema({
   },
   trustee_id: {
     type: String,
-    required: true,
   },
   student_info: {
     name: String,
@@ -18,6 +17,10 @@ const orderSchema = new mongoose.Schema({
   gateway_name: {
     type: String,
   },
+  // Add this new field to store the ID from the payment gateway
+  collect_request_id: {
+    type: String,
+  }
 }, {
   timestamps: true
 });
