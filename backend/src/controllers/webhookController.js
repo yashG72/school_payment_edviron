@@ -39,6 +39,9 @@ const handleWebhook = async (req, res) => {
     });
 
     await newStatus.save();
+
+    const io = req.app.get('socketio');
+    io.emit('transaction_update', newStatus);
     
     res.status(200).json({ msg: 'Webhook received successfully' });
   } catch (error) {
