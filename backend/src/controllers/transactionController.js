@@ -8,10 +8,17 @@ const getAllTransactions = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;
     const sortBy = req.query.sortBy || 'payment_time';
     const order = req.query.order === 'asc' ? 1 : -1;
-    
+    const status = req.query.status; // Get status from query
+
     const skip = (page - 1) * limit;
 
+    const matchStage = {};
+    if (status) {
+      matchStage.status = status;
+    }
+
     const aggregationPipeline = [
+      { $match: matchStage }, // Add this match stage
       {
         $lookup: {
           from: 'orders',
@@ -20,18 +27,11 @@ const getAllTransactions = async (req, res) => {
           as: 'orderDetails'
         }
       },
-      {
-        $unwind: '$orderDetails'
-      },
-      {
-        $sort: { [sortBy]: order }
-      },
-      {
-        $skip: skip
-      },
-      {
-        $limit: limit
-      },
+      // ... rest of the pipeline remains the same
+      { $unwind: '$orderDetails' },
+      { $sort: { [sortBy]: order } },
+      { $skip: skip },
+      { $limit: limit },
       {
         $project: {
           _id: 0,
@@ -48,8 +48,8 @@ const getAllTransactions = async (req, res) => {
     ];
 
     const transactions = await OrderStatus.aggregate(aggregationPipeline);
-    const totalTransactions = await OrderStatus.countDocuments();
-    
+    const totalTransactions = await OrderStatus.countDocuments(matchStage);
+
     res.json({
       transactions,
       currentPage: page,
