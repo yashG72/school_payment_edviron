@@ -1,7 +1,7 @@
-// In src/main.jsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import './index.css';
 
 import Layout from './components/Layout';
@@ -14,18 +14,18 @@ import SignUpPage from './pages/SignUpPage';
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <SignUpPage />, // Sign Up is now the root page
+    element: <SignUpPage />,
   },
   {
     path: '/login',
     element: <LoginPage />,
   },
   {
-    path: '/dashboard', // All dashboard pages are now here
+    path: '/dashboard',
     element: <Layout />,
     children: [
       {
-        index: true, // The default dashboard page
+        index: true,
         element: <DashboardPage />,
       },
       {
@@ -42,6 +42,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
