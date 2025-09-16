@@ -22,6 +22,7 @@ This is the frontend for the School Payment and Dashboard Application. It's a re
 
 *A few screenshots of your application will go here. Showcasing the login page, the main dashboard in both light and dark modes is a great idea.*
 
+**Dashboard (Light Mode)**
 <img width="1919" height="939" alt="Image" src="https://github.com/user-attachments/assets/b2427874-d7f2-425e-9d15-e520c16b46d3" />
 
 
