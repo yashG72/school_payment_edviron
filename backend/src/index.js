@@ -1,33 +1,30 @@
-
+// In backend/src/index.js
 const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const connectDB = require('./config/db');
-// import http from 'http'; 
-// import { Server } from 'socket.io';
 const http = require('http');
 const { Server } = require('socket.io');
 
+const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const webhookRoutes = require('./routes/webhookRoutes');
 const transactionRoutes = require('./routes/transactionRoutes');
 
 dotenv.config();
-
 connectDB();
 
 const app = express();
+const server = http.createServer(app); // Create HTTP server from Express app
 
-const server = http.createServer(app); 
-const io = new Server(server, {
+const io = new Server(server, { // Attach Socket.IO to the HTTP server
   cors: {
-    origin: "*", 
+    origin: "*", // Allow all origins for simplicity
     methods: ["GET", "POST"]
   }
 });
 
-app.set('socketio', io);
+app.set('socketio', io); // Make `io` globally available to your routes
 
 app.use(cors());
 app.use(express.json());
@@ -50,6 +47,7 @@ io.on('connection', (socket) => {
 
 const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, () => {
+// IMPORTANT: Listen on the `server` instance, not the `app` instance
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT} 🔥`);
 });
