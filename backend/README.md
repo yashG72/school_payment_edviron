@@ -1,5 +1,7 @@
 # School Payment and Dashboard - Backend API
 
+[![Live API](https://img.shields.io/badge/API-Live-brightgreen)](https://school-payment-edviron.onrender.com)
+
 This is the backend microservice for the School Payment and Dashboard Application. It is a RESTful API built with Node.js, Express, and MongoDB, providing endpoints for user authentication, payment processing, and transaction management.
 
 ---
