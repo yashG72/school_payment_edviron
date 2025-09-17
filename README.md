@@ -6,8 +6,8 @@ This is a complete full-stack application built for a software developer assessm
 
 ## 🚀 Live Demos
 
-* **Frontend Application (Vercel)**: `[https://school-payment-edviron.vercel.app/]`
-* **Backend API (Render)**: `[https://school-payment-edviron.onrender.com/]`
+* **Frontend Application (Vercel)**: `https://school-payment-edviron.vercel.app/`
+* **Backend API (Render)**: `https://school-payment-edviron.onrender.com/`
 
 ---
 
